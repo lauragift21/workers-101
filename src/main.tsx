@@ -76,31 +76,22 @@ function Presentation() {
   }, [currentSlide]);
 
   // Broadcast slide changes to the presenter view
-  useEffect(() => {
-    window.location.hash = String(currentSlide + 1);
-    const bc = new BroadcastChannel(PRESENTER_CHANNEL);
-    bc.postMessage({ slide: currentSlide });
-    bc.close();
-  }, [currentSlide]);
+  const bcRef = useRef<BroadcastChannel | null>(null);
 
-  // Listen for slide changes from the presenter view
   useEffect(() => {
-    const bc = new BroadcastChannel(PRESENTER_CHANNEL);
-    bc.onmessage = (event) => {
+    bcRef.current = new BroadcastChannel(PRESENTER_CHANNEL);
+    bcRef.current.onmessage = (event) => {
       if (typeof event.data?.slide === "number") {
         setCurrentSlide(event.data.slide);
       }
     };
-    return () => bc.close();
+    return () => bcRef.current?.close();
   }, []);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentSlide(getSlideFromHash());
-    };
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
-  }, []);
+    window.location.replace(`#${currentSlide + 1}`);
+    bcRef.current?.postMessage({ slide: currentSlide });
+  }, [currentSlide]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
