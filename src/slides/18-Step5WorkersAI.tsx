@@ -72,21 +72,23 @@ export default function Step5WorkersAISlide() {
         created. One binding, one function call.
       </p>
 
-      <div className="relative z-10 flex-1 grid grid-cols-[1.3fr_1fr] gap-5 items-start">
-        <div className="flex flex-col gap-3">
+      <div className="relative z-10 flex-1 grid grid-cols-[1.3fr_1fr] gap-5 min-h-0">
+        <div className="flex flex-col gap-3 min-h-0">
           <CodeBlock
             code={wranglerAI}
             language="jsonc"
             filename="wrangler.jsonc"
             showLineNumbers={false}
           />
-          <CodeBlock
-            code={aiCode}
-            language="typescript"
-            filename="src/index.ts"
-            showLineNumbers
-            maxHeight="260px"
-          />
+          <div className="overflow-y-auto min-h-0 flex-1">
+            <CodeBlock
+              code={aiCode}
+              language="typescript"
+              filename="src/index.ts"
+              showLineNumbers
+              wrap
+            />
+          </div>
         </div>
 
         <div className="flex flex-col gap-2.5">

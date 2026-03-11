@@ -67,6 +67,12 @@ export default function Step6AIGatewaySlide() {
 
       <div className="relative z-10 flex-1 grid grid-cols-[1.3fr_1fr] gap-5 items-start">
         <div className="flex flex-col gap-3">
+           <CodeBlock
+            code={setupSteps}
+            language="text"
+            filename="Dashboard Setup"
+            showLineNumbers={false}
+          />
           <CodeBlock
             code={gatewayCode}
             language="typescript"
@@ -74,12 +80,7 @@ export default function Step6AIGatewaySlide() {
             showLineNumbers={false}
             maxHeight="280px"
           />
-          <CodeBlock
-            code={setupSteps}
-            language="text"
-            filename="Dashboard Setup"
-            showLineNumbers={false}
-          />
+         
         </div>
 
         <div className="flex flex-col gap-2.5">

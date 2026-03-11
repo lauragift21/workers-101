@@ -10,6 +10,7 @@ interface CodeBlockProps {
   maxHeight?: string;
   height?: string;
   highlightLines?: (number | string)[];
+  wrap?: boolean;
 }
 
 function CopyButton({ code }: { code: string }) {
@@ -113,6 +114,7 @@ export function CodeBlock({
   maxHeight,
   height,
   highlightLines,
+  wrap = false,
 }: CodeBlockProps) {
   // For diff mode, parse prefixes and strip them for syntax highlighting
   const rawLines = code.trim().split("\n");
@@ -143,7 +145,7 @@ export function CodeBlock({
       <Highlight theme={themes.vsDark} code={highlightCode} language={language}>
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={`${className} p-4 ${!filename ? "pt-1" : ""} overflow-x-auto text-sm leading-relaxed`}
+            className={`${className} p-4 ${!filename ? "pt-1" : ""} ${wrap ? "whitespace-pre-wrap break-words" : "overflow-x-auto"} text-sm leading-relaxed`}
             style={{ ...style, margin: 0, background: "transparent" }}
           >
             {tokens.map((line, i) => {
