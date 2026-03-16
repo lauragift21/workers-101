@@ -48,16 +48,16 @@ export default function TitleSlide() {
           }}
         >
           <span className="text-3xl font-semibold" style={{ color: "#36180d" }}>
-            Train the Trainer Workshop: Workers 101
+            Workers 101 Workshop
           </span>
         </div>
 
         <p className="text-xl font-medium mb-2" style={{ color: "#fffbf5" }}>
-         Build and Deploy a Bookmark API with Cloudflare Workers
+          Build and Deploy a Bookmark API with Cloudflare Workers
         </p>
 
         <p className="text-lg" style={{ color: "rgba(255, 251, 245, 0.8)" }}>
-          Customer Success Training Session
+          Hands-on Workshop
         </p>
       </div>
     </div>
