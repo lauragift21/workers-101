@@ -38,7 +38,7 @@ export default function TestingStep2Slide() {
         Test Your API
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-4">
-        Use curl or your browser to test all four endpoints. Try creating a few
+        Use curl or an API client to test all four endpoints. Try creating a few
         bookmarks and listing them.
       </p>
 

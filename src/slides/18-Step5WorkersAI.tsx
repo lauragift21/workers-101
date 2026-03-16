@@ -1,6 +1,7 @@
 import { SlideFrame, PatternBackground, CodeBlock } from "../components";
 
-const wranglerAI = `{
+const wranglerAI = `// Add manually (AI binding is not auto-provisioned)
+{
   "ai": {
     "binding": "AI"
   }

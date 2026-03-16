@@ -79,14 +79,14 @@ export default function CacheAsidePatternSlide() {
           language="typescript"
           filename="Read (cache-aside)"
           showLineNumbers
-          maxHeight="370px"
+          maxHeight="450px"
         />
         <CodeBlock
           code={cacheWriteCode}
           language="typescript"
           filename="Write (write-through)"
           showLineNumbers
-          maxHeight="370px"
+          maxHeight="450px"
         />
       </div>
     </SlideFrame>

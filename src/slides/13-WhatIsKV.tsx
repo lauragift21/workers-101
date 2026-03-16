@@ -22,7 +22,8 @@ const kvOperations = [
 const characteristics = [
   { label: "Consistency", value: "Eventually consistent (up to 60s)" },
   { label: "Locations", value: "Replicated to 300+ data centers" },
-  { label: "Max Value", value: "25 MB per value" },
+  { label: "Max Key", value: "512 bytes per key" },
+  { label: "Max Value", value: "25 MiB per value" },
   { label: "Best For", value: "High-read, low-write data (config, cache)" },
 ];
 

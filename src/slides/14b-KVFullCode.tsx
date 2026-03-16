@@ -84,7 +84,7 @@ export default function KVFullCodeSlide() {
         Complete KV Implementation
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-3">
-        Replace the entire contents of{" "}
+        Replace the entire content of{" "}
         <code className="font-mono">src/index.ts</code> with this. Copy the full
         code using the button in the top-right corner.
       </p>

@@ -1,5 +1,5 @@
 import TitleSlide from "./01-Title";
-// import IntroductionSlide from "./02-Introduction";
+import IntroductionSlide from "./02-Introduction";
 import TrainingGoalsSlide from "./03-TrainingGoals";
 import WhatWeAreBuildingSlide from "./04-WhatWeAreBuilding";
 import WhatAreWorkersSlide from "./05-WhatAreWorkers";
@@ -27,7 +27,7 @@ import ThankYouSlide from "./24-ThankYou";
 
 export const slides = [
   { id: "title", component: TitleSlide },
-  // { id: "introduction", component: IntroductionSlide },
+  { id: "introduction", component: IntroductionSlide },
   { id: "training-goals", component: TrainingGoalsSlide },
   { id: "what-we-are-building", component: WhatWeAreBuildingSlide },
   { id: "what-are-workers", component: WhatAreWorkersSlide },

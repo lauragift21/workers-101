@@ -1,6 +1,6 @@
 import { SlideFrame, PatternBackground, CodeBlock } from "../components";
 
-const createD1 = `# Create D1 database
+const createD1 = `# Create D1 database (auto-adds binding to wrangler.jsonc)
 npx wrangler d1 create bookmark-db`;
 
 const wranglerConfig = `{
@@ -45,34 +45,12 @@ export default function D1SetupSlide() {
         Create Database & Schema
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-4">
-        Create the D1 database, define a schema, and apply it locally.
+        Create the D1 database, define a schema, and apply it locally. The
+        binding is auto-added to your config.
       </p>
 
       <div className="relative z-10 flex-1 grid grid-cols-2 gap-4 items-start">
-        {/* Left: Schema + callouts */}
-        <div className="flex flex-col gap-3">
-          <CodeBlock
-            code={schemaSQL}
-            language="sql"
-            filename="schema.sql"
-            showLineNumbers
-          />
-          <CodeBlock
-            code={wranglerConfig}
-            language="jsonc"
-            filename="wrangler.jsonc"
-            showLineNumbers={false}
-          />
-          <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
-            <p className="text-xs text-amber-800">
-              <strong>Parameterized queries:</strong> Always use{" "}
-              <code className="font-mono">.bind()</code> to prevent SQL
-              injection. Never concatenate user input into SQL strings.
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Terminal commands */}
+        {/* Left: Terminal commands */}
         <div className="flex flex-col gap-3">
           <CodeBlock
             code={createD1}
@@ -94,6 +72,29 @@ export default function D1SetupSlide() {
               .
             </p>
           </div>
+            <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+            <p className="text-xs text-amber-800">
+              <strong>Parameterized queries:</strong> Always use{" "}
+              <code className="font-mono">.bind()</code> to prevent SQL
+              injection. Never concatenate user input into SQL strings.
+            </p>
+          </div>
+        </div>
+
+        {/* Right: Schema + callouts */}
+        <div className="flex flex-col gap-3">
+          <CodeBlock
+            code={schemaSQL}
+            language="sql"
+            filename="schema.sql"
+            showLineNumbers
+          />
+          <CodeBlock
+            code={wranglerConfig}
+            language="jsonc"
+            filename="wrangler.jsonc (auto-added by CLI)"
+            showLineNumbers={false}
+          />
         </div>
       </div>
     </SlideFrame>

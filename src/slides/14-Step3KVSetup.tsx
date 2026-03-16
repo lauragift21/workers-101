@@ -1,6 +1,6 @@
 import { SlideFrame, PatternBackground, CodeBlock } from "../components";
 
-const createKV = `# Create a KV namespace
+const createKV = `# Create a KV namespace (auto-adds binding to wrangler.jsonc)
 npx wrangler kv namespace create "BOOKMARKS"
 
 # Generate types for the binding
@@ -58,25 +58,27 @@ export default function Step3KVSetupSlide() {
         Migrate to KV
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-4">
-        Create a KV namespace, add the binding, and replace Map operations with
-        KV calls.
+        Create a KV namespace and replace Map operations with KV calls.
       </p>
 
       <div className="relative z-10 flex-1 grid grid-cols-2 gap-5 items-start">
         {/* Left: Setup steps */}
         <div className="flex flex-col gap-3">
-          <StepLabel num={1} text="Create namespace + add to config" />
+          <StepLabel
+            num={1}
+            text="Create namespace (auto-configures binding)"
+          />
           <CodeBlock
             code={createKV}
             language="bash"
             filename="Terminal"
             showLineNumbers={false}
           />
-          <StepLabel num={2} text="Add binding to wrangler.jsonc" />
+          <StepLabel num={2} text="Verify binding in wrangler.jsonc" />
           <CodeBlock
             code={wranglerConfig}
             language="jsonc"
-            filename="wrangler.jsonc"
+            filename="wrangler.jsonc (auto-added by CLI)"
             showLineNumbers={false}
           />
         </div>
