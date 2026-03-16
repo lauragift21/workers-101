@@ -44,12 +44,12 @@ const steps = [
   },
 ];
 
-const resources = [
-  { label: "Workers Docs", url: "https://developers.cloudflare.com/workers" },
-  { label: "D1 Docs", url: "https://developers.cloudflare.com/d1" },
-  { label: "Workers AI", url: "https://developers.cloudflare.com/workers-ai" },
-  { label: "Discord", url: "https://discord.cloudflare.com" },
-];
+// const resources = [
+//   { label: "Workers Docs", url: "https://developers.cloudflare.com/workers" },
+//   { label: "D1 Docs", url: "https://developers.cloudflare.com/d1" },
+//   { label: "Workers AI", url: "https://developers.cloudflare.com/workers-ai" },
+//   { label: "Discord", url: "https://discord.cloudflare.com" },
+// ];
 
 export default function RecapSlide() {
   return (

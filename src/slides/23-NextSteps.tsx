@@ -24,7 +24,7 @@ const nextSteps = [
         <B>R2</B> for file uploads (bookmark screenshots, favicons)
       </>,
       <>
-        <B>Queues</B> for async background processing
+        <B>Drizzle ORM</B> for type-safe D1 queries and migrations
       </>,
     ],
   },
