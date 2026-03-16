@@ -7,10 +7,13 @@ const B = ({ children }: { children: ReactNode }) => (
 
 const nextSteps = [
   {
-    title: "Add a Framework",
+    title: "Observability",
     items: [
       <>
-        Use <B>Hono</B> for cleaner routing, middleware, and OpenAPI support
+        <B>Tail Workers</B> for real-time log streaming and filtering
+      </>,
+      <>
+        <B>Workers Logs</B> for persistent, queryable production logs
       </>,
     ],
   },

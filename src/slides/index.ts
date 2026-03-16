@@ -13,12 +13,15 @@ import TestingStep2Slide from "./12-TestingStep2";
 import WhatIsKVSlide from "./13-WhatIsKV";
 import Step3KVSetupSlide from "./14-Step3KVSetup";
 import KVFullCodeSlide from "./14b-KVFullCode";
+import TestingStep3Slide from "./14c-TestingStep3";
 import Step4D1IntroSlide from "./15-Step4D1Intro";
 import D1SetupSlide from "./16-D1Setup";
 import CacheAsidePatternSlide from "./17-CacheAsidePattern";
 import D1FullCodeSlide from "./17b-D1FullCode";
+import TestingStep4Slide from "./17c-TestingStep4";
 import Step5WorkersAISlide from "./18-Step5WorkersAI";
 import Step6AIGatewaySlide from "./19-Step6AIGateway";
+import TestingStep5Slide from "./19b-TestingStep5";
 import Step7DeploySlide from "./20-Step7Deploy";
 import PlatformOverviewSlide from "./21-PlatformOverview";
 import RecapSlide from "./22-Recap";
@@ -41,12 +44,15 @@ export const slides = [
   { id: "what-is-kv", component: WhatIsKVSlide },
   { id: "step-3-kv-setup", component: Step3KVSetupSlide },
   { id: "step-3-full-code", component: KVFullCodeSlide },
+  { id: "testing-step-3", component: TestingStep3Slide },
   { id: "step-4-d1-intro", component: Step4D1IntroSlide },
   { id: "d1-setup", component: D1SetupSlide },
   { id: "cache-aside-pattern", component: CacheAsidePatternSlide },
   { id: "step-4-full-code", component: D1FullCodeSlide },
+  { id: "testing-step-4", component: TestingStep4Slide },
   { id: "step-5-workers-ai", component: Step5WorkersAISlide },
   { id: "step-6-ai-gateway", component: Step6AIGatewaySlide },
+  { id: "testing-step-5", component: TestingStep5Slide },
   { id: "step-7-deploy", component: Step7DeploySlide },
   { id: "platform-overview", component: PlatformOverviewSlide },
   { id: "recap", component: RecapSlide },

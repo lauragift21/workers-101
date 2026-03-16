@@ -96,7 +96,7 @@ export default function RecapSlide() {
         </div>
 
         {/* Right: resources */}
-        <div className="flex flex-col gap-2 w-[180px]">
+        {/* <div className="flex flex-col gap-2 w-[180px]">
           <p className="text-xs font-bold text-cf-text">Resources</p>
           {resources.map((r) => (
             <a
@@ -111,7 +111,7 @@ export default function RecapSlide() {
               </p>
             </a>
           ))}
-        </div>
+        </div> */}
       </div>
     </SlideFrame>
   );

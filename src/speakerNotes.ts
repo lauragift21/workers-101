@@ -35,6 +35,9 @@ export const speakerNotes: Record<string, string> = {
   "step-3-full-code": `Here's the full code for the KV version. There's a copy button up in the top-right corner -- just grab the whole thing and replace your src/index.ts. The big difference from before: the in-memory Map is completely gone. Every handler now goes through env.BOOKMARKS. Here's how you can verify it's working -- create a bookmark, stop the dev server, start it back up, and list your bookmarks. They should still be there. That's persistence.
 [Give people 2-3 minutes to paste and test.]`,
 
+  "testing-step-3": `Alright, time to prove KV actually works. Create a bookmark, then do the real test -- stop your dev server with Ctrl+C, start it back up with npx wrangler dev, and list your bookmarks again. They should still be there. That's the whole point of this step -- unlike the in-memory version, KV persists data. If your data survived the restart, you're good to move on.
+[Give people 2-3 minutes to test.]`,
+
   "step-4-d1-intro": `Now things get interesting. We're adding a proper database. D1 is our SQL database, built on SQLite, so anyone who knows SQL can use it right away. Look at the comparison here -- KV is great for fast reads, but you can only look things up by key. D1 gives you full SQL. JOINs, WHERE clauses, filtering, all of it. So what we're going to do is use both together: D1 as our source of truth and KV as a fast read cache in front of it. This is actually a really common architectural pattern.`,
 
   "d1-setup": `Same pattern as before -- create the database from the CLI, which auto-adds the binding to wrangler.jsonc, write a schema file, and apply it. Notice we've added a tags column to our schema. That's going to let us do things like "show me all bookmarks tagged with 'dev-tools'" -- which would be impossible with just KV. And please, always use parameterized queries with .bind(). Don't concatenate user input into SQL strings. Let's walk through each step.
@@ -45,11 +48,17 @@ export const speakerNotes: Record<string, string> = {
   "step-4-full-code": `Here's the complete code with both D1 and KV working together. Same drill -- copy and replace your src/index.ts. What's new compared to the KV-only version: our Bookmark type now has tags and created_at fields, you can filter bookmarks by tag using a query parameter like ?tag=dev-tools, writes go to D1 first then KV, reads check KV first then fall back to D1. Try it out -- create some bookmarks with different tags, filter them, and check for that _cached field to see the caching in action.
 [Give people 5-6 minutes to paste, test, and verify caching with the _cached field.]`,
 
+  "testing-step-4": `Now let's test the D1 + KV cache combo. Create a couple bookmarks with different tags -- try "cloudflare,docs" on one and "framework,dev-tools" on another. Then use the tag filter: curl localhost:8787/bookmarks?tag=dev-tools. That should only return matching bookmarks. Now here's the fun part -- GET a single bookmark by ID. First time, it comes from D1. GET the same one again and look for the _cached field in the response -- that means it came from KV. That's the cache-aside pattern in action.
+[Give people 3-4 minutes to test tags and verify caching.]`,
+
   "step-5-workers-ai": `Okay, this is the fun part. We're adding AI. The pitch is really simple -- one binding, one function call, no external API keys, no separate billing. We're using Llama 3.1 8B to auto-generate a summary when you create a bookmark. Important design choice: if the AI call fails, we still create the bookmark with an empty summary. You never want AI to block core functionality -- that's a good principle for any production system. One heads up -- for this step you need to run npx wrangler dev --remote because the AI models run on Cloudflare's GPUs, not locally.
 [Give people 4-5 minutes.]`,
 
   "step-6-ai-gateway": `This might be the easiest step in the whole session. You add one parameter to the AI.run call and you get caching, analytics, and rate limiting. It's not just inference -- it's observability and cost control built in. Create an AI Gateway in the dashboard first, then add the gateway option to your code. Once it's deployed, you can see every AI call logged with latency, token count, and cache status. Really useful when you need visibility into AI usage and costs.
 [Quick 2-3 minute exercise.]`,
+
+  "testing-step-5": `Let's test the AI integration. Important -- you need to restart your dev server with the --remote flag: npx wrangler dev --remote. This is because AI models run on Cloudflare GPUs, not locally. Create a new bookmark and check the response -- you should see a "summary" field with an AI-generated description. If the summary is empty, that's the graceful fallback working -- the AI call might have timed out, but the bookmark still got created. That's by design.
+[Give people 3-4 minutes to test.]`,
 
   "step-7-deploy": `Alright, the moment of truth -- we're deploying to production. One command: npx wrangler deploy. But before that, we need to apply our D1 schema to the remote database -- same command as before but without the --local flag. Once it's live, wrangler tail gives you real-time logs, and wrangler rollback is there if anything goes sideways. The deploy experience is really smooth.
 [Do a live deploy if time allows -- it's a great demo moment.]`,
@@ -58,7 +67,7 @@ export const speakerNotes: Record<string, string> = {
 
   recap: `Let's take a step back and look at what we just did. We started with a Hello World and ended up with a production API that has a SQL database, a caching layer, AI-powered summaries, and it's deployed to 300+ cities. In about an hour and a half. Everything composes together through bindings, deployment is a single command, and you don't need to stitch together a bunch of third-party services. It's all on one platform.`,
 
-  "next-steps": `So where do you go from here? If you want to keep building on this, Hono is a great next step for cleaner routing. R2 and Queues are there when you need file storage or background processing. Durable Objects for anything real-time. And the Agents SDK if you're exploring the AI side. The Workers docs are a solid resource, and the Cloudflare Discord community is also really active and helpful.`,
+  "next-steps": `So where do you go from here? First, observability -- we used wrangler tail today, but there's also Workers Logs for persistent, queryable logs in production. That's the first thing you want when something breaks at 2am. R2 and Queues are there when you need file storage or background processing. Durable Objects for anything real-time. And the Agents SDK if you're exploring the AI side. The Workers docs are a solid resource, and the Cloudflare Discord community is also really active and helpful.`,
 
   "thank-you": `That's a wrap! Thanks for building along with me. If anything comes up later -- questions, issues, or you just want to go deeper on something -- don't hesitate to reach out. And honestly, the best thing you can do is keep building on what we started. Extend this API, try breaking it, add new features. That's how it sticks. Thanks everyone!`,
 };

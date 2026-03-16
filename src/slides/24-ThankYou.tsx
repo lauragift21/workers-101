@@ -15,7 +15,7 @@ export default function ThankYouSlide() {
         <p className="text-xl text-cf-text-muted mb-6">
           Now go build something on Workers.
         </p>
-        <div className="flex gap-4 text-sm text-cf-text-muted">
+        <div className="flex gap-4 text-sm text-cf-text-muted mb-8">
           <a
             href="https://developers.cloudflare.com/workers"
             target="_blank"
@@ -39,6 +39,14 @@ export default function ThankYouSlide() {
           >
             Tutorials
           </a>
+        </div>
+
+        <div className="flex flex-col items-center gap-2">
+          <img
+            src="/images/qr-workers-101.png"
+            alt="Workshop resources"
+            className="w-28 h-28 rounded-lg"
+          />
         </div>
       </div>
     </SlideFrame>

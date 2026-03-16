@@ -56,6 +56,19 @@ export default function TitleSlide() {
           Build and Deploy a Bookmark API with Cloudflare Workers
         </p>
       </div>
+
+      {/* QR code — bottom right */}
+      <div className="absolute bottom-5 right-6 z-10 flex flex-col items-center gap-1.5">
+        <img
+          src="/images/qr-workers-101.png"
+          alt="Workshop resources"
+          className="w-24 h-24 rounded-lg"
+          style={{ boxShadow: "0 2px 12px rgba(0, 0, 0, 0.2)" }}
+        />
+        <span className="text-[10px] font-medium" style={{ color: "#fffbf5" }}>
+          Scan for resources
+        </span>
+      </div>
     </div>
   );
 }
