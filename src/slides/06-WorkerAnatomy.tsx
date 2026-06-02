@@ -23,7 +23,7 @@ const params = [
   {
     name: "ctx",
     type: "ExecutionContext",
-    desc: "waitUntil() for background tasks, passThroughOnException() for fallback",
+    desc: "waitUntil() for background tasks",
   },
 ];
 

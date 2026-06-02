@@ -18,12 +18,13 @@ const schemaSQL = `CREATE TABLE IF NOT EXISTS bookmarks (
   url TEXT NOT NULL,
   title TEXT NOT NULL,
   tags TEXT DEFAULT '',
+  summary TEXT DEFAULT '',
   created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );`;
 
 const applySchema = `# Apply schema locally
 npx wrangler d1 execute bookmark-db \\
-  --local --file=schema.sql
+  --local --file=schema.sql --yes
 
 # Generate updated types
 npx wrangler types`;
@@ -66,13 +67,14 @@ export default function D1SetupSlide() {
           />
           <div className="bg-green-50 border border-green-200 rounded-lg px-4 py-3">
             <p className="text-xs text-green-700">
-              <strong>Tags:</strong> We added a{" "}
-              <code className="font-mono">tags</code> column so we can filter
-              bookmarks by tag using SQL <code className="font-mono">LIKE</code>
-              .
+              <strong>Tags &amp; Summary:</strong> The{" "}
+              <code className="font-mono">tags</code> column lets us filter
+              with <code className="font-mono">LIKE</code>. The{" "}
+              <code className="font-mono">summary</code> column will be
+              populated by AI in Step 5.
             </p>
           </div>
-            <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
+          <div className="bg-amber-50 border border-amber-200 rounded-lg px-4 py-3">
             <p className="text-xs text-amber-800">
               <strong>Parameterized queries:</strong> Always use{" "}
               <code className="font-mono">.bind()</code> to prevent SQL

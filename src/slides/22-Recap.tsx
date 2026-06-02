@@ -1,4 +1,4 @@
-import { SlideFrame, PatternBackground } from "../components";
+import { Card, SlideFrame, PatternBackground } from "../components";
 
 const steps = [
   {
@@ -40,7 +40,7 @@ const steps = [
     num: 7,
     title: "Production Deploy",
     detail:
-      "Shipped globally with secrets management, auth, live logs, and rollback",
+      "Shipped globally with live logs and rollback",
   },
 ];
 
@@ -74,11 +74,12 @@ export default function RecapSlide() {
 
       <div className="relative z-10 flex-1 grid grid-cols-[1fr_auto] gap-6 items-start">
         {/* Left: step list */}
-        <div className="grid grid-cols-2 gap-2">
+        <div className="grid grid-cols-2 gap-5">
           {steps.map((s) => (
-            <div
+            <Card
               key={s.num}
-              className="flex items-start gap-2.5 bg-white rounded-lg border border-cf-border px-3 py-2.5"
+              corners cornerSize="sm" 
+              className="flex items-start gap-2.5 bg-white rounded-lg border border-cf-border px-3 py-4"
             >
               <div className="w-6 h-6 rounded-full bg-cf-orange flex items-center justify-center shrink-0 mt-0.5">
                 <span className="text-[10px] font-bold text-white">
@@ -86,12 +87,12 @@ export default function RecapSlide() {
                 </span>
               </div>
               <div>
-                <p className="text-xs font-bold text-cf-text">{s.title}</p>
-                <p className="text-[10px] text-cf-text-muted mt-0.5">
+                <p className="text-md font-bold text-cf-text">{s.title}</p>
+                <p className="text-sm text-cf-text-muted mt-0.5">
                   {s.detail}
                 </p>
               </div>
-            </div>
+            </Card>
           ))}
         </div>
 

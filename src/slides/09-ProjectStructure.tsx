@@ -10,7 +10,7 @@ const fileTree = `bookmark-api/
 const wranglerCode = `{
   "name": "bookmark-api",
   "main": "src/index.ts",
-  "compatibility_date": "2026-03-11",
+  "compatibility_date": "2026-06-02",
   "compatibility_flags": ["nodejs_compat"]
 }`;
 

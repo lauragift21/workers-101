@@ -19,6 +19,7 @@ const responseExample = `// Second GET returns "_cached": true
   "url": "https://workers.cloudflare.com",
   "title": "Workers Docs",
   "tags": "cloudflare,dev-tools",
+  "summary": "",
   "_cached": true
 }`;
 

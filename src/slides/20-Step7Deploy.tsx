@@ -2,14 +2,24 @@ import { SlideFrame, PatternBackground, CodeBlock } from "../components";
 
 const deploySteps = `# 1. Apply D1 schema to production
 npx wrangler d1 execute bookmark-db \\
-  --remote --file=schema.sql
+  --remote --file=schema.sql --yes
 
-# 2. Apply AI summary migration
-npx wrangler d1 execute bookmark-db \\
-  --remote --file=migration-summary.sql
-
-# 3. Deploy the Worker
+# 2. Deploy the Worker
 npx wrangler deploy`;
+
+const commonErrors = `# Common gotchas at deploy:
+
+# "D1 binding not found"
+# → Run: npx wrangler types
+
+# "AI binding not available"
+# → Forgot --remote flag (dev only)
+
+# "Table not found"
+# → Forgot step 1: apply schema with --remote
+
+# "AI Gateway error"
+# → Check gateway ID matches dashboard name`;
 
 const opsCommands = `# Stream live logs from production
 npx wrangler tail
@@ -46,6 +56,12 @@ export default function Step7DeploySlide() {
             code={deploySteps}
             language="bash"
             filename="Terminal"
+            showLineNumbers={false}
+          />
+          <CodeBlock
+            code={commonErrors}
+            language="bash"
+            filename="Common Gotchas"
             showLineNumbers={false}
           />
         </div>

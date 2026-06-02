@@ -36,7 +36,7 @@ const cacheWriteCode = `async function createBookmark(
     url?: string; title?: string; tags?: string
   };
 
-  const id = crypto.randomUUID();
+  const id = crypto.randomUUID().slice(0, 8);
   // Write to D1 (source of truth)
   const result = await env.DB.prepare(
     \`INSERT INTO bookmarks (id, url, title, tags)

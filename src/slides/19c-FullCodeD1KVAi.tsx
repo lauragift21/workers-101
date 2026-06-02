@@ -24,7 +24,7 @@ export default {
 
     if (path === "/") {
       return Response.json({
-        name: "Bookmark API", version: "3.0.0", storage: "D1 + KV cache",
+        name: "Bookmark API", version: "4.0.0", storage: "D1 + KV + AI",
       });
     }
     return Response.json({ error: "Not Found" }, { status: 404 });
@@ -49,6 +49,38 @@ async function listBookmarks(env: Env, url: URL): Promise<Response> {
   return Response.json({ bookmarks: results, count: results.length });
 }
 
+async function generateSummary(
+  title: string, url: string, env: Env
+): Promise<string> {
+  try {
+    const response = await env.AI.run(
+      "@cf/meta/llama-3.1-8b-instruct-fast",
+      {
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful assistant that writes concise bookmark descriptions. Respond with exactly one sentence, no more than 20 words."
+          },
+          {
+            role: "user",
+            content: \`Write a one-sentence description for this bookmark:\\nTitle: \${title}\\nURL: \${url}\`
+          }
+        ],
+      },
+      {
+        gateway: {
+          id: "bookmark-gateway",
+          skipCache: false,
+          cacheTtl: 86400,
+        },
+      }
+    );
+    return response.response?.trim() || "";
+  } catch {
+    return "";
+  }
+}
+
 async function createBookmark(request: Request, env: Env): Promise<Response> {
   const body = (await request.json()) as {
     url?: string; title?: string; tags?: string;
@@ -57,10 +89,12 @@ async function createBookmark(request: Request, env: Env): Promise<Response> {
     return Response.json({ error: "Missing: url, title" }, { status: 400 });
   }
   const id = crypto.randomUUID().slice(0, 8);
+  const summary = await generateSummary(body.title, body.url, env);
+
   const result = await env.DB.prepare(
-    \`INSERT INTO bookmarks (id, url, title, tags)
-     VALUES (?, ?, ?, ?) RETURNING *\`
-  ).bind(id, body.url, body.title, body.tags || "").first<Bookmark>();
+    \`INSERT INTO bookmarks (id, url, title, tags, summary)
+     VALUES (?, ?, ?, ?, ?) RETURNING *\`
+  ).bind(id, body.url, body.title, body.tags || "", summary).first<Bookmark>();
 
   if (!result) {
     return Response.json({ error: "Failed to create" }, { status: 500 });
@@ -93,7 +127,7 @@ async function deleteBookmark(id: string, env: Env): Promise<Response> {
   return Response.json({ message: "Bookmark deleted" });
 }`;
 
-export default function D1FullCodeSlide() {
+export default function FullCodeD1KVAiSlide() {
   return (
     <SlideFrame className="flex flex-col p-8">
       <PatternBackground className="opacity-20" />
@@ -101,18 +135,17 @@ export default function D1FullCodeSlide() {
       {/* Header */}
       <div className="relative z-10 flex items-center justify-between mb-3">
         <span className="text-sm font-medium text-white bg-cf-orange px-3 py-1 rounded-full">
-          Step 4 - Full Code
+          Step 5/6 - Full Code
         </span>
         <img src="/logos/cloudflare.svg" alt="Cloudflare" className="h-8" />
       </div>
 
       <h1 className="relative z-10 text-3xl font-bold text-cf-text mb-1">
-        Complete D1 + KV Cache Implementation
+        Complete D1 + KV + AI + Gateway
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-3">
-        Replace the entire contents of{" "}
-        <code className="font-mono">src/index.ts</code> with this. D1 as source
-        of truth, KV as read cache, tag filtering via SQL.
+        Replace your entire <code className="font-mono">src/index.ts</code> with this.
+        Includes AI summary generation and AI Gateway caching.
       </p>
 
       <div className="relative z-10 flex-1">

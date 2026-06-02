@@ -3,6 +3,8 @@ import IntroductionSlide from "./02-Introduction";
 import TrainingGoalsSlide from "./03-TrainingGoals";
 import WhatWeAreBuildingSlide from "./04-WhatWeAreBuilding";
 import WhatAreWorkersSlide from "./05-WhatAreWorkers";
+// import WorkersRuntimeSlide from "./05b-WorkersRuntime";
+import IsolatesVisualSlide from "./05c-IsolatesVisual";
 import WorkerAnatomySlide from "./06-WorkerAnatomy";
 import PrerequisitesSlide from "./07-Prerequisites";
 import Step1GettingStartedSlide from "./08-Step1GettingStarted";
@@ -22,11 +24,13 @@ import TestingStep4Slide from "./17c-TestingStep4";
 import Step5WorkersAISlide from "./18-Step5WorkersAI";
 import Step6AIGatewaySlide from "./19-Step6AIGateway";
 import TestingStep5Slide from "./19b-TestingStep5";
+import FullCodeD1KVAiSlide from "./19c-FullCodeD1KVAi";
 import Step7DeploySlide from "./20-Step7Deploy";
 import PlatformOverviewSlide from "./21-PlatformOverview";
 import RecapSlide from "./22-Recap";
 import NextStepsSlide from "./23-NextSteps";
 import ThankYouSlide from "./24-ThankYou";
+import FeedbackSlide from "./25-Feedback";
 
 export const slides = [
   { id: "title", component: TitleSlide },
@@ -34,6 +38,8 @@ export const slides = [
   { id: "training-goals", component: TrainingGoalsSlide },
   { id: "what-we-are-building", component: WhatWeAreBuildingSlide },
   { id: "what-are-workers", component: WhatAreWorkersSlide },
+  // { id: "workers-runtime", component: WorkersRuntimeSlide },
+  { id: "isolates-visual", component: IsolatesVisualSlide },
   { id: "worker-anatomy", component: WorkerAnatomySlide },
   { id: "prerequisites", component: PrerequisitesSlide },
   { id: "step-1-getting-started", component: Step1GettingStartedSlide },
@@ -53,9 +59,11 @@ export const slides = [
   { id: "step-5-workers-ai", component: Step5WorkersAISlide },
   { id: "step-6-ai-gateway", component: Step6AIGatewaySlide },
   { id: "testing-step-5", component: TestingStep5Slide },
+  { id: "step-5-6-full-code", component: FullCodeD1KVAiSlide },
   { id: "step-7-deploy", component: Step7DeploySlide },
   { id: "platform-overview", component: PlatformOverviewSlide },
   { id: "recap", component: RecapSlide },
   { id: "next-steps", component: NextStepsSlide },
+  { id: "feedback", component: FeedbackSlide },
   { id: "thank-you", component: ThankYouSlide },
 ];

@@ -31,7 +31,17 @@ const aiCode = `async function generateSummary(
     // Graceful failure: never block bookmark creation
     return "";
   }
-}`;
+}
+
+// Inside createBookmark --- add before the DB insert:
+const summary = await generateSummary(body.title, body.url, env);
+
+// Update INSERT to include summary:
+const result = await env.DB.prepare(
+  \`INSERT INTO bookmarks (id, url, title, tags, summary)
+   VALUES (?, ?, ?, ?, ?) RETURNING *\`
+).bind(id, body.url, body.title, body.tags || "", summary)
+ .first<Bookmark>();`;
 
 const features = [
   {

@@ -53,7 +53,7 @@ export default function TrainingGoalsSlide() {
                 <span className="text-cf-orange text-2xl leading-none mt-1 flex-shrink-0">
                   &bull;
                 </span>
-                <span className="text-2xl text-cf-text leading-snug">
+                <span className="text-xl text-cf-text leading-snug">
                   {item}
                 </span>
               </li>
