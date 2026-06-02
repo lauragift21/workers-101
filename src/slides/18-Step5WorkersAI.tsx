@@ -45,20 +45,20 @@ const result = await env.DB.prepare(
 
 const features = [
   {
-    title: "No API keys needed",
-    desc: "The AI binding is injected through wrangler.jsonc. Just call env.AI.run().",
+    title: "Serverless pricing",
+    desc: "Pay-per-inference pricing with no idle costs. No guessing what.",
   },
   {
-    title: "70+ open-source models",
-    desc: "Text generation, embeddings, image generation, speech-to-text, and more.",
+    title: "Rich model catalog",
+    desc: "50+ models running close to users in 200+ cities.",
   },
   {
-    title: "Runs on Cloudflare GPUs",
-    desc: "Low latency inference. No external services or cold starts for popular models.",
+    title: "Widely compatible",
+    desc: "One API call, works with any OpenAI SDK or task type.",
   },
   {
     title: "Use with --remote",
-    desc: "Workers AI models run on Cloudflare's network: use npx wrangler dev --remote.",
+    desc: "Workers AI models run on Cloudflare GPUs: use npx wrangler dev --remote.",
   },
 ];
 
@@ -76,11 +76,12 @@ export default function Step5WorkersAISlide() {
       </div>
 
       <h1 className="relative z-10 text-3xl font-bold text-cf-text mb-1">
-        AI-Powered Summaries
+        The AI Inference Platform
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-4">
-        Automatically generate bookmark summaries when a new bookmark is
-        created. One binding, one function call.
+        Workers AI lets you run AI inference globally with one API call. No GPUs
+        to manage, no capacity planning. Just intelligent models running where
+        they're needed, on Cloudflare's global network.
       </p>
 
       <div className="relative z-10 flex-1 grid grid-cols-[1.3fr_1fr] gap-5 min-h-0">

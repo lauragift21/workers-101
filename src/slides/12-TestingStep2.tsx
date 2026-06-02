@@ -85,6 +85,20 @@ export default function TestingStep2Slide() {
               Step 3.
             </p>
           </div>
+
+          <div className="bg-blue-50 border border-blue-200 rounded-lg px-4 py-3">
+            <p className="text-xs font-bold text-blue-800 mb-1">
+              🎯 Bonus: add a PUT endpoint
+            </p>
+            <p className="text-xs text-blue-700">
+              Try adding{" "}
+              <code className="font-mono">PUT /bookmarks/&lt;id&gt;</code> to
+              update an existing bookmark. Match the ID, replace the bookmark in
+              the Map, and return the updated record. Same pattern as{" "}
+              <code className="font-mono">getBookmark</code> and{" "}
+              <code className="font-mono">deleteBookmark</code>.
+            </p>
+          </div>
         </div>
       </div>
     </SlideFrame>

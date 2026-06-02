@@ -27,20 +27,20 @@ const setupSteps = `Steps:
 
 const benefits = [
   {
-    title: "Caching",
-    desc: "Identical AI requests return cached responses. Save tokens and reduce latency.",
+    title: "Reduce Costs & Latency",
+    desc: "Easily cache responses and reduce redundant API calls — leading to direct cost savings.",
   },
   {
-    title: "Analytics",
-    desc: "Request count, cache hit rate, latency, token usage, and error rate in the dashboard.",
+    title: "Improve Reliability",
+    desc: "Configure how and when model provider APIs are called based on specific attributes or fallbacks.",
   },
   {
-    title: "Rate Limiting",
-    desc: "Control request volume to manage costs and prevent abuse.",
+    title: "Add Observability",
+    desc: "Rich usage insights: token counts, prompt performance, and pattern analysis.",
   },
   {
-    title: "Logging",
-    desc: "Full request/response logging for debugging and auditing AI calls.",
+    title: "Dynamic Routing",
+    desc: "Route requests based on latency, cost, or availability. No redeploys, no downtime.",
   },
 ];
 
@@ -58,11 +58,11 @@ export default function Step6AIGatewaySlide() {
       </div>
 
       <h1 className="relative z-10 text-3xl font-bold text-cf-text mb-1">
-        AI Gateway
+        An Intelligent Control Plane for Your AI Applications
       </h1>
       <p className="relative z-10 text-sm text-cf-text-muted mb-4">
-        Route AI calls through a managed gateway for caching, monitoring, and
-        cost control. One extra parameter, zero code changes.
+        Connect to any model, dynamically route requests, and manage usage,
+        billing, and logs from one unified gateway.
       </p>
 
       <div className="relative z-10 flex-1 grid grid-cols-[1.3fr_1fr] gap-5 items-start">
@@ -80,7 +80,7 @@ export default function Step6AIGatewaySlide() {
             showLineNumbers={false}
             maxHeight="280px"
           />
-         
+
         </div>
 
         <div className="flex flex-col gap-2.5">

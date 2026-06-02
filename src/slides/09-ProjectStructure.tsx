@@ -3,6 +3,8 @@ import { SlideFrame, PatternBackground, CodeBlock } from "../components";
 const fileTree = `bookmark-api/
   src/
     index.ts        # Your Worker code (fetch handler)
+  test/
+    index.spec.ts   # Test your Worker code with Vitest
   wrangler.jsonc    # Cloudflare config (bindings, routes)
   package.json      # Dependencies and scripts
   tsconfig.json     # TypeScript configuration`;
@@ -18,6 +20,10 @@ const features = [
   {
     file: "src/index.ts",
     desc: "The fetch handler. This is where all your Worker logic lives.",
+  },
+  {
+    file: "test/index.spec.ts",
+    desc: "Vitest tests for your Worker. Run with npm test.",
   },
   {
     file: "wrangler.jsonc",
